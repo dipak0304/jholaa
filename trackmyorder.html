@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="logooo.png" href="logooo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <title>Jhola</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+          
+            width: 100%;
+            
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .tracking-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 50%;
+            margin-top: 20px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            background: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2c8d8b;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        #header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 100%;
+        }
+        #navbar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #navbar li{
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+        #navbar li a{
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        
+        }
+        #navbar li a:hover,
+        #navbar li a.active{
+            color: #088178;
+        }
+        #navbar li a.active::after,
+        #navbar li a:hover::after
+        {
+            content:"" ;
+            width: 30%;
+            height: 2px;
+            background-color: #088178;
+            position: absolute ;
+            bottom: -4px;
+            left: 20px;
+        }
+        #header .logo{
+            width: 120px;
+            height: 50px;
+            }
+    </style>
+</head>
+<body>
+
+    <section id="header">
+        <a href="#"><img src="logooo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a  href="Category.html">Category</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </section>  
+    <h1>Track My Order</h1>
+    <div class="tracking-box">
+        <p>Enter your Order ID below to track your shipment:</p>
+        <input type="text" id="orderID" placeholder="Enter Order ID">
+        <button onclick="trackOrder()">Track</button>
+        <div class="result" id="result"></div>
+    </div>
+    <footer class="section-p1">
+        <div class="col">
+            <img src="logooo.png" alt="" class="dipak1">
+            <h4><strong>Contact</strong></h4>
+            <p><strong>Address:</strong></p>
+            <p><strong>Phone:+977-9810822935</strong></p>
+            <p><strong>Email:Jholanp@gmail.com</strong></p>
+        
+        <div class="follow">
+            <h4><strong>Follow Us</strong></h4>
+            <div class="icon">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"> <i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="aboutus.html">About us</a>
+            <a href="deliveryinfo.html">Delivery Information</a>
+            <a href="PrivacyPolicy.html">Privacy Policy</a>
+            <a href="terms&condition.html">Terms & Conditions</a>
+            <a href="#">Contact us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="profile.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="trackmyorder.html">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="">
+                <img src="img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+            <p>© 2025, Jholanp. All Rights Reserved</p>
+        </div>
+    </footer>
+    <script>
+        function trackOrder() {
+            const orderID = document.getElementById("orderID").value;
+            const resultBox = document.getElementById("result");
+
+            if (!orderID) {
+                resultBox.innerHTML = "⚠️ Please enter a valid Order ID.";
+                return;
+            }
+
+            // Simulated tracking statuses (for demo)
+            const statuses = [
+                "Order Placed ✅",
+                "Processing 📦",
+                "Shipped 🚚",
+                "Out for Delivery 🚀",
+                "Delivered 🎉"
+            ];
+
+            // Simulate random status
+            const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+            resultBox.innerHTML = `<strong>Status:</strong> ${randomStatus}`;
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</body>
+</html>

@@ -1,0 +1,157 @@
+
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="logooo.png" href="logooo.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <title>Jhola</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.8;
+                margin: 0;
+                padding: 0;
+                background-color: #eef2f3;
+            }
+            .container {
+                max-width: 900px;
+                margin: 50px auto;
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            h1, h2 {
+                color: #2c3e50;
+                border-bottom: 2px solid #3498db;
+                padding-bottom: 5px;
+            }
+            p {
+                color: #555;
+                text-align: justify;
+            }
+            .footer {
+                margin-top: 30px;
+                font-size: 0.9em;
+                text-align: center;
+                color: #888;
+                border-top: 1px solid #ddd;
+                padding-top: 10px;
+                position: relative;
+            }
+            .back-button {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 10px 20px;
+                background-color: #088178;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                position: absolute;
+                right: 20px;
+                bottom: 10px;
+            }
+            #header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 80px;
+                background: #E3E6F3;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+                z-index: 999;
+                position: sticky;
+                top: 0;
+                left: 0;
+                height: 50px;
+               
+            }
+            #navbar{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #navbar li{
+                list-style: none;
+                padding: 0 20px;
+                position: relative;
+            }
+            #navbar li a{
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 600;
+                color: #1a1a1a;
+                transition: 0.3s ease;
+            
+            }
+            #navbar li a:hover,
+            #navbar li a.active{
+                color: #088178;
+            }
+            #navbar li a.active::after,
+            #navbar li a:hover::after
+            {
+                content:"" ;
+                width: 30%;
+                height: 2px;
+                background-color: #088178;
+                position: absolute ;
+                bottom: -4px;
+                left: 20px;
+            }
+            #header .logo{
+                width: 120px;
+                height: 50px;
+                }
+        </style>
+    </head>
+    <body>
+        <section id="header">
+            <a href="#"><img src="logooo.png" class="logo" alt=""</a>
+            <div>
+                <ul id="navbar">
+                    <li><a  href="index.html">Home</a></li>
+                    <li><a class="active" href="shop.html">Shop</a></li>
+                    <li><a href="Category.html">Category</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                </ul>
+            </div>
+        </section> 
+        
+        <div class="container">
+            <h1>Terms and Conditions</h1>
+            <p>Welcome to Jhola! These terms and conditions outline the rules and regulations for the use of our website.</p>
+            
+            <h2>1. Introduction</h2>
+            <p>By accessing this website, you accept these terms and conditions in full. Do not continue to use Jhola if you do not accept all of the terms and conditions stated on this page.</p>
+            
+            <h2>2. Intellectual Property Rights</h2>
+            <p>All content published and made available on this website is the property of Jhola and its creators. This includes, but is not limited to, images, text, logos, and graphics.</p>
+            
+            <h2>3. User Obligations</h2>
+            <p>By using this website, you agree to not engage in any fraudulent activities, distribute harmful software, or violate any applicable laws.</p>
+            
+            <h2>4. Payments and Refunds</h2>
+            <p>All payments made on Jhola are secure. Refund policies are detailed on the refund policy page.</p>
+            
+            <h2>5. Limitation of Liability</h2>
+            <p>Jhola shall not be held responsible for any indirect, consequential, or special liability arising out of or in any way related to your use of this website.</p>
+            
+            <h2>6. Changes to Terms</h2>
+            <p>Jhola reserves the right to modify these terms at any time. We recommend checking this page regularly.</p>
+            
+            <div class="footer">
+                <p>&copy; 2025 Jhola. All Rights Reserved.</p>
+                <a href="javascript:history.back()" class="back-button">Back</a>
+            </div>
+        </div>
+    </body>
+
+    </html>
+    
+
