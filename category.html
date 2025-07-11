@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhola</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="icon" type="logooo.png" href="logooo.png">
+    <style>
+        /* Container for categories and products */
+        .container {
+            display: flex;
+        }
+
+        /* Left side: Categories */
+        .categories {
+            width: 20%;
+            margin-right: 20px;
+        }
+
+        .category {
+            padding: 15px;
+            cursor: pointer;
+            background-color: #f4f4f4;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .category:hover {
+            background-color: #ddd;
+        }
+
+        /* Right side: Product display */
+        .product-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 3 products per row */
+            gap: 20px;
+            width: 70%;
+            margin-top: 15px;
+            margin-right: 2px;
+            margin-left: 40px;
+        }
+
+        /* Product card styling */
+        .product-card {
+            padding: 10px 12px;
+            border: 1px solid #cce7d0;
+            border-radius: 25px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-color: #fff;
+            
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card .desc {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .product-card .desc h5 {
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .product-card .desc .price {
+            color: #088178;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+
+        .cart {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: #e8f6ea;
+            font-weight: 500;
+            color: #088178;
+            border: 1px solid #cce7d0;
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+        }
+        .cart:hover{
+            color: #e8f6ea;
+            background-color: #1a1a1a;
+        }
+        #header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 70px;
+           
+        }
+        #navbar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #navbar li{
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+        #navbar li a{
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        
+        }
+        #navbar li a:hover,
+        #navbar li a.active{
+            color: #088178;
+        }
+        #navbar li a.active::after,
+        #navbar li a:hover::after
+        {
+            content:"" ;
+            width: 30%;
+            height: 2px;
+            background-color: #088178;
+            position: absolute ;
+            bottom: -4px;
+            left: 20px;
+        }
+        #navbar {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        #navbar li {
+            position: relative;
+        }
+        #header .logo{
+            width: 120px;
+            height: 50px;
+            }
+            #searchBox {
+                margin-top: 15px;
+                margin-bottom: 10px;
+                row-gap: 30%;
+                column-gap: 50%;
+                width: 240px;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: "Spartan", sans-serif;
+            }
+            
+            html {
+              scroll-behavior: smooth;
+            }
+            .cart-notification {
+                position: fixed;
+                bottom: 25%;
+                left: 50%;
+                transform: translateX(-50%);
+                
+                color: rgb(0, 179, 255);
+                padding: 15px 20px;
+               font-weight: 500;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+                font-size: 16px;
+                display: none;
+                z-index: 1000;
+                transition: 0.5s ease-in-out;
+            }
+    </style>
+</head>
+
+<body>
+    <header>
+        <section id="header">
+            <a href="#"><img src="logooo.png" class="logo" alt=""></a>
+            <div>
+                <ul id="navbar">
+                    <li><a  href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a class="active" href="Category.html">Category</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                </ul>
+            </div>
+        </section>
+        
+        <input type="text" id="searchBox" placeholder="Search for categories..." onkeyup="searchCategories()">
+    </header>
+    <div class="container">
+        <!-- Left side: Categories -->
+        <div class="categories">
+            <div class="category" onclick="showProducts('all')">All Products</div>
+            <div class="category" onclick="showProducts('mobiles')">Mobiles</div>
+            <div class="category" onclick="showProducts('earbuds')">Earbuds</div>
+            <div class="category" onclick="showProducts('watches')">Watches & Accessories</div>
+            <div class="category" onclick="showProducts('mensClothes')">Men's Clothes</div>
+            <div class="category" onclick="showProducts('electronicApplinces')">Electronic Appliances</div>
+            <div class="category" onclick="showProducts('electricApplinces')">Electric Appliances</div>
+            <div class="category" onclick="showProducts('toys')">Toys</div>
+            <div class="category" onclick="showProducts('healthandbeauty')">Health & Beauty</div>
+            <div class="category" onclick="showProducts('footballjersey')">Football Jersey</div>
+            <div class="category" onclick="showProducts('womensClothes')">Women's Clothes</div>
+            <div class="category" onclick="showProducts('childrensClothes')">Children's Clothes</div>
+            <div class="category" onclick="showProducts('shoes')">Shoes</div>
+            <div class="category" onclick="showProducts('footballcleats')">Football Cleats</div>
+           
+        </div>
+
+        <!-- Right side: Product display -->
+        <div id="productDisplay"  class="product-display"   >
+            
+            <!-- Example Products (Category: Mobiles) -->
+            <div class="product-card" data-category="mobiles">
+                <img src="mobile/mbl1.jpg" alt="Iphone 15 Pro Max 256GB"  onclick="window.location.href='ip15.html'">
+                <div class="desc" >
+                    <h5>Iphone 16 Pro Max</h5>
+                    <p class="price">NPR 232,499.00</p>
+                  
+                    
+                </div>
+                
+                    <a href="#"><i class="fal fa-shopping-cart cart  add-to-cart" data-name="Iphone 16 Pro Max" data-price="232499" data-image="mobile/i1.png" ></i></a>
+                
+                
+            </div>
+
+            <div class="product-card" data-category="mobiles" >
+                <img src="mobile/s1.png" alt="Samsung Galaxy S24 Ultra"   onclick="window.location.href='s24.html'">
+                <div class="desc"  >
+                    <h5>Samsung Galaxy S24 Ultra </h5>
+                    <p class="price">NPR 184,999.00</p>
+                    <a href="#"><i class="fal fa-shopping-cart cart add-to-cart" data-name="Samsung Galaxy S24 Ultra" data-price="184999" data-image="mobile/s1.png" ></i></a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="mobiles">
+                <img src="mobile/mbl3.jpg" alt="Redmi Note 14 Pro 5G">
+                <div class="desc">
+                    <h5>Redmi Note 14 Pro 5G</h5>
+                    <p class="price">NPR 39,999.00</p>
+                    <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Redmi Note 14 Pro 5G" data-price="39999" data-image="mobile/mbl3.jpg"></i></a>
+                </div>
+            </div>
+            <div class="product-card" data-category="mobiles">
+                <img src="mobile/2a.png" alt="Nothing 2a">
+                <div class="desc">
+                    <h5>Nothing 2a</h5>
+                    <p class="price">NPR 45,999.00</p>
+                    <a href="#" class="cart"><i class="fal fa-shopping-cart"></i></a>
+                </div>
+            </div>
+
+            
+
+<!-- Men's Clothes Products -->
+<div class="product-card" data-category="watches">
+    <img src="watch/w1.jpg" alt="Smart Watch">
+    <div class="desc">
+        <h5>Smart Watch</h5>
+        <p class="price">NPR 4,499.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Smart Watch" data-price="4499" data-image="watch/w1.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="watch/w2.jpg" alt="D13 Smart Watch">
+    <div class="desc">
+        <h5>D13 Smart Watch</h5>
+        <p class="price">NPR 3,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="D13 Smart Watch" data-price="3999" data-image="watch/w2.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="watch/w3.png" alt="Ultima Watch Circle">
+    <div class="desc">
+        <h5>Ultima Watch Circle</h5>
+        <p class="price">NPR 3,977.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Ultima Watch Circle" data-price="3977" data-image="watch/w3.png"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="glasses/g1.jpg" alt="Metal Frame Cut Hexagonal">
+    <div class="desc">
+        <h5>Metal Frame Cut Hexagonal</h5>
+        <p class="price">NPR 1,099.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Metal Frame Cut Hexagonal" data-price="1099" data-image="glasses/g1.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="glasses/b1.jpg" alt="Barca Chain">
+    <div class="desc">
+        <h5>Barca Chain</h5>
+        <p class="price">NPR 9,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Barca Chain" data-price="9999" data-image="glasses/b1.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="glasses/b22.jpg" alt="Barca Energy Diamond Chain">
+    <div class="desc">
+        <h5>Barca Energy Diamond Chain</h5>
+        <p class="price">NPR 99,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Barca Energy Diamond Chain" data-price="99999" data-image="glasses/b22.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar1.jpg" alt="Shiny Earings">
+    <div class="desc">
+        <h5>Shiny Earings</h5>
+        <p class="price">NPR 299.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Shiny Earings" data-price="299" data-image="girls/ar1.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar2.jpg" alt="14K Gold Dangle Drop Hoop Earrings">
+    <div class="desc">
+        <h5>Dangle Drop Hoop Earrings</h5>
+        <p class="price">NPR 2,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Dangle Drop Hoop Earrings" data-price="2999" data-image="girls/ar2.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/a3.jpg" alt="22K Gold Earrings">
+    <div class="desc">
+        <h5>22K Gold Earrings</h5>
+        <p class="price">NPR 5,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="22K Gold Earrings" data-price="5999" data-image="girls/a3.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar4.jpg" alt="24K Gold Earrings">
+    <div class="desc">
+        <h5>24K Gold Earrings</h5>
+        <p class="price">NPR 11,549.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="24K Gold Earrings" data-price="11549" data-image="girls/ar4.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar5.jpg" alt="Butterfly Necklaces">
+    <div class="desc">
+        <h5>Butterfly Necklaces</h5>
+        <p class="price">NPR 7,499.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Butterfly Necklaces" data-price="7499" data-image="girls/ar5.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar6.jpg" alt="Zirconia Butterfly Necklace">
+    <div class="desc">
+        <h5>Zirconia Butterfly Necklace</h5>
+        <p class="price">NPR 2,599.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Zirconia Butterfly Necklace" data-price="2599" data-image="girls/ar6.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar7.jpg" alt="Dainty Butterfly Gold Plated">
+    <div class="desc">
+        <h5>Dainty Butterfly Gold Plated</h5>
+        <p class="price">NPR 1,499.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Dainty Butterfly Gold Plated" data-price="1499" data-image="girls/ar7.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar8.jpg" alt="Gold Plated Butterfly">
+    <div class="desc">
+        <h5>Gold Plated Butterfly</h5>
+        <p class="price">NPR 2,799.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Gold Plated Butterfly" data-price="2799" data-image="girls/ar8.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="watches">
+    <img src="girls/ar9.jpg" alt="Gold Plated Necklace">
+    <div class="desc">
+        <h5>Gold Plated Necklace</h5>
+        <p class="price">NPR 3,199.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Gold Plated Necklace" data-price="3199" data-image="girls/ar9.jpg"></i></a>
+    </div>
+</div>
+
+<!-- Men's Clothes Products -->
+<div class="product-card" data-category="mensClothes">
+    <img src="img/products/prod1.png" alt="Lymio Casual Shirts">
+    <div class="desc">
+        <h5>Lymio Casual Shirts</h5>
+        <p class="price">NPR 1,800.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Lymio Casual Shirts" data-price="1800" data-image="img/products/prod1.png"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="mensClothes">
+    <img src="shirts/s1.jpg" alt="Classic Suit">
+    <div class="desc">
+        <h5>Light Blue Cotton</h5>
+        <p class="price">NPR 3,000.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Light Blue Cotton" data-price="3000" data-image="shirts/s1.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="mensClothes">
+    <img src="shirts/s2.jpg" alt="Classic Suit">
+    <div class="desc">
+        <h5>MSJUHEG Blazer Suit</h5>
+        <p class="price">NPR 15,000.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="MSJUHEG Blazer Suit" data-price="15000" data-image="shirts/s2.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="mensClothes">
+    <img src="shirts/s3.jpg" alt="Classic Suit">
+    <div class="desc">
+        <h5>Thicken Cotton Jacket</h5>
+        <p class="price">NPR 19,199.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Thicken Cotton Jacket" data-price="19199" data-image="shirts/s3.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="mensClothes">
+    <img src="shirts/s4.jpg" alt="Classic Suit">
+    <div class="desc">
+        <h5>Heritage Shirt Jacket</h5>
+        <p class="price">NPR 4,990.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Heritage Shirt Jacket" data-price="4990" data-image="shirts/s4.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="mensClothes">
+    <img src="shirts/s5.jpg" alt="Classic Suit">
+    <div class="desc">
+        <h5>Long Sleeve Shirt</h5>
+        <p class="price">NPR 2,000.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Long Sleeve Shirt" data-price="2000" data-image="shirts/s5.jpg"></i></a>
+    </div>
+</div>
+  <!-- football cleats-->
+  <div class="product-card" data-category="shoes">
+    <img src="shoes/air1.jpg" alt="Air Force 1">
+    <div class="desc">
+        <h5>Air Force 1</h5>
+        <p class="price">NPR 4,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Air Force 1" data-price="4999" data-image="shoes/air1.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="shoes">
+    <img src="shoes/jd4.jpg" alt="Jordan 4 Retro">
+    <div class="desc">
+        <h5>Jordan 4 Retro</h5>
+        <p class="price">NPR 7,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Jordan 4 Retro" data-price="7999" data-image="shoes/jd4.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="shoes">
+    <img src="shoes/jd3.jpg" alt="Jordan 3">
+    <div class="desc">
+        <h5>Jordan 3</h5>
+        <p class="price">NPR 8,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Jordan 3" data-price="8999" data-image="shoes/jd3.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="shoes">
+    <img src="shoes/aa1.jpg" alt="Unisex UA SlipSpeed™">
+    <div class="desc">
+        <h5>Unisex UA SlipSpeed™</h5>
+        <p class="price">NPR 3,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Unisex UA SlipSpeed™" data-price="3999" data-image="shoes/aa1.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="shoes">
+    <img src="shoes/aa2.jpg" alt="Nike Winflo 11">
+    <div class="desc">
+        <h5>Nike Winflo 11</h5>
+        <p class="price">NPR 15,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Nike Winflo 11" data-price="15999" data-image="shoes/aa2.jpg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="shoes">
+    <img src="shoes/aa3.jpg" alt="ADIDAS MUNCHEN 24">
+    <div class="desc">
+        <h5>ADIDAS MUNCHEN 24</h5>
+        <p class="price">NPR 11,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="ADIDAS MUNCHEN 24" data-price="11999" data-image="shoes/aa3.jpg"></i></a>
+    </div>
+</div>
+<div class="product-card" data-category="footballcleats">
+    <img src="cleats/NKV111.png" alt="Nike Vapor Pro 1">
+    <div class="desc">
+        <h5>Nike Vapor Pro 1</h5>
+        <p class="price">NPR 12,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Nike Vapor Pro 1" data-price="12999" data-image="cleats/NKV111.png"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="footballcleats">
+    <img src="cleats/NKV2.png" alt="Nike Vapor Edge Pro 360 2">
+    <div class="desc">
+        <h5>Nike Vapor Edge Pro 360 2</h5>
+        <p class="price">NPR 15,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Nike Vapor Edge Pro 360 2" data-price="15999" data-image="cleats/NKV2.png"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="footballcleats">
+    <img src="cleats/NKV3.png" alt="Nike Vapor Edge Speed 360 2">
+    <div class="desc">
+        <h5>Nike Vapor Edge Speed 360 2</h5>
+        <p class="price">NPR 14,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Nike Vapor Edge Speed 360 2" data-price="14999" data-image="cleats/NKV3.png"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="footballcleats">
+    <img src="cleats/NU1.png" alt="Nike United Mercurial Vapor 16 Elite">
+    <div class="desc">
+        <h5>Nike United Mercurial Vapor 16 Elite</h5>
+        <p class="price">NPR 21,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Nike United Mercurial Vapor 16 Elite" data-price="21999" data-image="cleats/NU1.png"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="footballcleats">
+    <img src="cleats/AD1.jpeg" alt="Adidas F50">
+    <div class="desc">
+        <h5>Adidas F50</h5>
+        <p class="price">NPR 17,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Adidas F50" data-price="17999" data-image="cleats/AD1.jpeg"></i></a>
+    </div>
+</div>
+
+<div class="product-card" data-category="footballcleats">
+    <img src="cleats/AD2.png" alt="Predator Club Firm">
+    <div class="desc">
+        <h5>Predator Club Firm</h5>
+        <p class="price">NPR 9,999.00</p>
+        <a href="#" class="cart"><i class="fal fa-shopping-cart add-to-cart" data-name="Predator Club Firm" data-price="9999" data-image="cleats/AD2.png"></i></a>
+    </div>
+</div>
+
+
+            <!-- football jersey-->
+            <div class="product-card" data-category="footballjersey">
+                <img src="img/products/ars1.jpg" alt="Arsenal Home Jersey">
+                <div class="desc">
+                    <h5>Arsenal Home Jersey</h5>
+                    <p class="price">NPR 5,599.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Arsenal Home Jersey" data-price="5599" data-image="img/products/ars1.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="footballjersey">
+                <img src="img/products/barca1.png" alt="Barca Home Jersey">
+                <div class="desc">
+                    <h5>Barca Home Jersey</h5>
+                    <p class="price">NPR 5,499.00</p>
+                    <a href="barca.html" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Barca Home Jersey" data-price="5499" data-image="img/products/barca1.png"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="footballjersey">
+                <img src="img/products/ch1.jpg" alt="Chelsea Home Jersey">
+                <div class="desc">
+                    <h5>Chelsea Home Jersey</h5>
+                    <p class="price">NPR 5,999.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Chelsea Home Jersey" data-price="5999" data-image="img/products/ch1.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="footballjersey">
+                <img src="img/products/mc1.jpg" alt="Manchester City Home Jersey">
+                <div class="desc">
+                    <h5>Manchester City Home Jersey</h5>
+                    <p class="price">NPR 5,499.00</p>
+                    <a href="mc.html" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Manchester City Home Jersey" data-price="5499" data-image="img/products/mc1.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="footballjersey">
+                <img src="img/products/rm2.jpg" alt="Real Madrid Home Jersey">
+                <div class="desc">
+                    <h5>Real Madrid Home Jersey</h5>
+                    <p class="price">NPR 4,499.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Real Madrid Home Jersey" data-price="4499" data-image="img/products/rm2.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="footballjersey">
+                <img src="img/products/mu.jpg" alt="Manchester United Home Jersey">
+                <div class="desc">
+                    <h5>Manchester United Home Jersey</h5>
+                    <p class="price">NPR 4,999.00</p>
+                    <a href="mu.html" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Manchester United Home Jersey" data-price="4999" data-image="img/products/mu.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/ar1.jpg" alt="boAT Airpods 91 TWS">
+                <div class="desc">
+                    <h5>boAT Airpods 91 TWS</h5>
+                    <p class="price">NPR 2,699.00</p>
+                    <a href="boat91.html" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="boAT Airpods 91 TWS" data-price="2699" data-image="bannerr/air/ar1.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/ar2.jpg" alt="Apple Airpods Pro (2nd G)">
+                <div class="desc">
+                    <h5>Apple Airpods Pro (2nd G)</h5>
+                    <p class="price">NPR 44,500.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Apple Airpods Pro (2nd G)" data-price="44500" data-image="bannerr/air/ar2.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/ar3.jpg" alt="Oneplus Earbuds 3 E509A">
+                <div class="desc">
+                    <h5>Oneplus Earbuds 3 E509A</h5>
+                    <p class="price">NPR 12,490.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Oneplus Earbuds 3 E509A" data-price="12490" data-image="bannerr/air/ar3.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/ar4.jpg" alt="Galaxy Buds 3 Pro">
+                <div class="desc">
+                    <h5>Galaxy Buds 3 Pro</h5>
+                    <p class="price">NPR 3,199.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Galaxy Buds 3 Pro" data-price="3199" data-image="bannerr/air/ar4.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/a5.jpg" alt="Huawei FreeClip Wireless">
+                <div class="desc">
+                    <h5>Huawei FreeClip Wireless</h5>
+                    <p class="price">NPR 7,499.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Huawei FreeClip Wireless" data-price="7499" data-image="bannerr/air/a5.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/ar6.jpg" alt="Vivo TWS Air">
+                <div class="desc">
+                    <h5>Vivo TWS Air</h5>
+                    <p class="price">NPR 7,999.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="Vivo TWS Air" data-price="7999" data-image="bannerr/air/ar6.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/ar7.jpg" alt="SYMTECH Invisible Sleep Headphones">
+                <div class="desc">
+                    <h5>SYMTECH Invisible Sleep Headphones</h5>
+                    <p class="price">NPR 12,199.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="SYMTECH Invisible Sleep Headphones" data-price="12199" data-image="bannerr/air/ar7.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earbuds">
+                <img src="bannerr/air/ar8.jpg" alt="JBL Live Beam 3 True Wireless Earbuds">
+                <div class="desc">
+                    <h5>JBL Live Beam 3 True Wireless Earbuds</h5>
+                    <p class="price">NPR 31,999.00</p>
+                    <a href="#" class="cart">
+                        <i class="fal fa-shopping-cart add-to-cart" data-name="JBL Live Beam 3 True Wireless Earbuds" data-price="31999" data-image="bannerr/air/ar8.jpg"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+      
+
+
+
+
+            
+        
+        
+        //abovecodeforcart    
+        
+        
+        
+        
+        
+        
+        function showProducts(category) {
+            // Get all product cards
+            const productCards = document.querySelectorAll('.product-card');
+        
+            // Loop through all product cards and hide those that don't match the selected category
+            productCards.forEach(card => {
+                // Get the category of the product by checking its data-category attribute
+                const productCategory = card.getAttribute('data-category');
+        
+                // If the category of the product matches the selected category, show the product card, else hide it
+                if (productCategory === category || category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Optionally, load all products by default when the page is first loaded
+        window.onload = function() {
+            showProducts('all'); // Show all products initially
+        };
+        function searchCategories() {
+            let input = document.getElementById("searchBox").value.toLowerCase();
+            let categories = document.querySelectorAll(".category");
+        
+            categories.forEach(function(category) {
+                if (category.innerText.toLowerCase().includes(input)) {
+                    category.style.display = "block";
+                } else {
+                    category.style.display = "none";
+                }
+            });
+        }
+    </script>
+    
+<script src="script.js"></script>
+</body>
+</html>
+

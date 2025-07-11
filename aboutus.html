@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhola</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="icon" type="logooo.png" href="logooo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+          }
+       #header .logo{
+           width: 120px;
+           height: 50px;
+           }
+          body{
+            width: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            min-height: 100vh;
+            position: relative;
+          }
+          #header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 100%;
+        }
+        #navbar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #navbar li{
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+        #navbar li a{
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        
+        }
+        #navbar li a:hover,
+        #navbar li a.active{
+            color: #088178;
+        }
+        #navbar li a.active::after,
+        #navbar li a:hover::after
+        {
+            content:"" ;
+            width: 30%;
+            height: 2px;
+            background-color: #088178;
+            position: absolute ;
+            bottom: -4px;
+            left: 20px;
+        }
+       
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-5px) rotate(-5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card {
+            background-color: #fff;
+            width: 500px;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+            transition: transform 1s ease-in-out;
+        }
+
+        .card:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .team-section, .values-section, .contact-section {
+            margin-top: 30px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            background-color: #f0f0f0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 220px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: box-shadow 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .team-member h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .team-member p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Hover Effects */
+        .team-member:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05) translateY(-10px); /* Slight 3D movement */
+        }
+
+        .team-member:hover img {
+            transform: scale(1.2);  /* Image scaling */
+            filter: brightness(1.1);  /* Slight brightening effect */
+        }
+
+        .team-member:hover h3 {
+            color: #007BFF;  /* Change name color to blue */
+            transform: translateY(-5px);  /* Move name upwards slightly */
+        }
+
+        /* Value Items (4D Effect) */
+        .value-items {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .value-item {
+            background: linear-gradient(135deg, #0c393c, #f4b004);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 220px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+        }
+
+        .value-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .value-item p {
+            color: #fff;
+            font-size: 1.1em;
+        }
+
+        .value-item:hover {
+            transform: translateY(-15px) scale(1.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+
+        /* New Section (Additional Items) */
+        .additional-section {
+            margin-top: 40px;
+        }
+
+        .additional-items {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .additional-item {
+            background: linear-gradient(135deg, #76e2f0, #d4a5d7); /* Unique color gradient */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 220px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+        }
+
+        .additional-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .additional-item p {
+            color: #fff;
+            font-size: 1.1em;
+        }
+
+        .additional-item:hover {
+            transform: translateY(-15px) scale(1.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+
+        /* Copyright Section */
+        footer p {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            color: #555;
+            font-size: 1em;
+        }
+        .ddd{
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <a href="#"><img src="logooo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a  href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a  href="Category.html">Category</a></li>
+                <li><a class="active" href="aboutus.html">About</a></li>
+                <li><a  href="profile.html">Profile</a></li>
+                <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </section>  
+
+    <div class="container">
+        <!-- About Us Section with tilt effect -->
+        <div class="card">
+            <h1>About Us</h1>
+            <p>Welcome to Jhola! We're passionate about providing high-quality products for everyone. Our mission is to bring convenience and joy to your shopping experience. Whether you're looking for the latest fashion trends or unique accessories, we've got something for you!</p>
+            <p>Founded with the goal to revolutionize online shopping, we aim to make every purchase an enjoyable one.</p>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+
+        <!-- Main Team Member in Center -->
+        <div class="team-section" style="margin-top: 40px;">
+            <h2>Meet Our Team</h2>
+            <div class="team-member" style="margin: 20px auto;">
+                <img src="unknown.jpg" alt="Main Team Member">
+                <h3>Dipak Bohara</h3>
+                <p>Founder & CEO</p>
+            </div>
+        </div>
+
+        <!-- Other Team Members in Rows -->
+        <div class="team-members">
+            <div class="team-member">
+                <img src="unknown.jpg" alt="Team Member 2">
+                <h3>Rahul K. Chaudhary</h3>
+                <p>Head of Marketing</p>
+            </div>
+            <div class="team-member">
+                <img src="unknown.jpg" alt="Team Member 3">
+                <h3>Rohit Darshandhari</h3>
+                <p>Lead Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="unknown.jpg" alt="Team Member 4">
+                <h3>Krishna Karki</h3>
+                <p>UX Designer</p>
+            </div>
+        </div>
+        
+        <div class="team-members">
+            <div class="team-member">
+                <img src="unknown.jpg" alt="Team Member 5">
+                <h3>Darwin K. Chaulagain</h3>
+                <p>Product Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="unknown.jpg" alt="Team Member 6">
+                <h3>Ujwal Jha</h3>
+                <p>Operations Head</p>
+            </div>
+            <div class="team-member">
+                <img src="unknown.jpg" alt="Team Member 7">
+                <h3>Mohammad Salman</h3>
+                <p>Customer Support</p>
+            </div>
+        </div>
+
+        <!-- Values Section -->
+        <div class="values-section">
+            <h2>Our Values</h2>
+            <div class="value-items">
+                <div class="value-item">
+                    <h3>Quality</h3>
+                    <p>We ensure all our products are of the highest quality for a great customer experience.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Integrity</h3>
+                    <p>We always maintain transparency and honesty in our dealings with customers.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Innovation</h3>
+                    <p>We continuously strive for innovation to bring new and exciting products to our customers.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Customer First</h3>
+                    <p>Our customers are at the heart of everything we do, and their satisfaction drives us.</p>
+                </div>
+            </div>
+        
+                <h2 class="ddd">Our Commitment to Sustainability</h2>
+                <div class="additional-items">
+                    <div class="additional-item">
+                        <h3>Eco-friendly Products</h3>
+                        <p>We believe in making a positive environmental impact by offering eco-friendly products.</p>
+                    </div>
+                    <div class="additional-item">
+                        <h3>Energy Efficiency</h3>
+                        <p>We focus on energy-efficient solutions for all our products and operations.</p>
+                    </div>
+                    <div class="additional-item">
+                        <h3>Waste Reduction</h3>
+                        <p>Our goal is to reduce waste by using recyclable materials and minimizing packaging.</p>
+                    </div>
+                </div>
+            
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance, feel free to reach out to us.</p>
+            <p>Email: support@jhola.com</p>
+            <p>Phone: 1-800-123-4567</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Jhola. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
+

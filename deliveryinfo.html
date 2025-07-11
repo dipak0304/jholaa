@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhola</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="icon" type="logooo.png" href="logooo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            
+            margin-top: 20px;
+        }
+        .container h1{
+            
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 150px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-5px) rotate(-5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .info-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #53cadf, #464301);
+            box-shadow: 0 10px 40px rgba(16, 187, 203, 0.2);
+            border-radius: 10px;
+            width: 300px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+        }
+
+        .info-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .info-card p {
+            color: #fff;
+            font-size: 1.1em;
+        }
+
+        .info-card:hover {
+            transform: translateY(-15px) scale(1.1) rotateX(10deg) rotateY(5deg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+
+        footer p {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            color: #555;
+            font-size: 1em;
+        }
+      .contact-section  h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+       .contact-section p {
+        text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        #header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 100%;
+        }
+        #navbar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #navbar li{
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+        #navbar li a{
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        
+        }
+        #navbar li a:hover,
+        #navbar li a.active{
+            color: #088178;
+        }
+        #navbar li a.active::after,
+        #navbar li a:hover::after
+        {
+            content:"" ;
+            width: 30%;
+            height: 2px;
+            background-color: #088178;
+            position: absolute ;
+            bottom: -4px;
+            left: 20px;
+        }
+        #header .logo{
+            width: 120px;
+            height: 50px;
+            }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="logooo.png" class="logo" alt=""</a>
+        <div>
+            <ul id="navbar">
+                <li><a  href="index.html">Home</a></li>
+                <li><a class="active" href="shop.html">Shop</a></li>
+                <li><a href="Category.html">Category</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </section> 
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <div class="container">
+        <h1>Delivery Information</h1>
+
+        <div class="info-section">
+            <div class="info-card">
+                <h3>Shipping Methods</h3>
+                <p>We offer Standard, Express, and Same-Day delivery options based on your location.</p>
+            </div>
+            <div class="info-card">
+                <h3>Estimated Delivery</h3>
+                <p>Orders are usually delivered within 3-7 business days, depending on the shipping method.</p>
+            </div>
+            <div class="info-card">
+                <h3>International Shipping</h3>
+                <p>We ship worldwide! Delivery time varies based on destination and customs clearance.</p>
+            </div>
+            <div class="info-card">
+                <h3>Return & Refund Policy</h3>
+                <p>If you're not satisfied with your order, return it within 14 days for a full refund.</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Free vs Paid Shipping</h3>
+                <p>Enjoy free shipping on orders above $50! Paid express options are also available.</p>
+            </div>
+            <div class="info-card">
+                <h3>Order Tracking</h3>
+                <p>Track your order in real-time using the tracking ID provided after purchase.</p>
+            </div>
+            <div class="info-card">
+                <h3>Delayed Deliveries</h3>
+                <p>If your order is delayed, check your email for updates or contact our support team.</p>
+            </div>
+            <div class="info-card">
+                <h3>Lost or Damaged Packages</h3>
+                <p>In case of lost or damaged items, we offer replacements or full refunds.</p>
+            </div>
+            <div class="info-card">
+                <h3>Eco-Friendly Packaging</h3>
+                <p>We use biodegradable packaging materials to minimize environmental impact.</p>
+            </div>
+            <div class="info-card">
+                <h3>Bulk & Wholesale Shipping</h3>
+                <p>For bulk orders, we offer special shipping rates and dedicated support.</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us.</p>
+        <p>Email: support@jhola.com</p>
+        <p>Phone: 1-800-123-4567</p>
+    </div>
+</div>
+
+
+    <footer>
+        <p>&copy; 2025 Jhola. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

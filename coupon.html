@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhola</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="icon" type="logooo.png" href="logooo.png">
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="logooo.png" class="logo" alt="Jhola Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="Category.html">Category</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="page-header">
+        <h2>#Collect Coupons</h2>
+        <p>Get exciting discounts on your favorite products!</p>
+    </section>
+
+    <section id="coupons" class="section-p1">
+        <div class="coupon-container">
+            <div class="coupon-card" data-code="JHOLANP">
+                <h3>50% OFF</h3>
+                <p>Use Code: <strong>JHOLANP</strong></p>
+                <p>Valid for: <span class="usage">120</span> uses</p>
+                <button class="copy-btn">Collect</button>
+            </div>
+            <div class="coupon-card" data-code="SAVE60">
+                <h3>60% OFF</h3>
+                <p>Use Code: <strong>SAVE60</strong></p>
+                <p>Valid for: <span class="usage">120</span> uses</p>
+                <button class="copy-btn">Collect</button>
+            </div>
+            <div class="coupon-card" data-code="DISCOUNT35">
+                <h3>35% OFF</h3>
+                <p>Use Code: <strong>DISCOUNT35</strong></p>
+                <p>Valid for: <span class="usage">120</span> uses</p>
+                <button class="copy-btn">Collect</button>
+            </div>
+            <div class="coupon-card" data-code="SAVE20">
+                <h3>20% OFF</h3>
+                <p>Use Code: <strong>SAVE20</strong></p>
+                <p>Valid for: <span class="usage">120</span> uses</p>
+                <button class="copy-btn">Collect</button>
+            </div>
+        </div>
+    </section>
+    <footer class="section-p1">
+        <div class="col">
+            <img src="logooo.png" alt="" class="dipak1">
+            <h4><strong>Contact</strong></h4>
+            <p><strong>Address:</strong></p>
+            <p><strong>Phone:+977-9810822935</strong></p>
+            <p><strong>Email:Jholanp@gmail.com</strong></p>
+        
+        <div class="follow">
+            <h4><strong>Follow Us</strong></h4>
+            <div class="icon">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"> <i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="aboutus.html">About us</a>
+            <a href="deliveryinfo.html">Delivery Information</a>
+            <a href="PrivacyPolicy.html">Privacy Policy</a>
+            <a href="terms&condition.html">Terms & Conditions</a>
+            <a href="#">Contact us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="profile.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="trackmyorder.html">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="">
+                <img src="img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+            <p>© 2025, Jholanp. All Rights Reserved</p>
+        </div>
+    </footer>
+    
+    
+            <script src="script.js"></script>
+        </body>
+    
+    </html>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const collectedCoupons = JSON.parse(localStorage.getItem("collectedCoupons")) || {};
+            
+            document.querySelectorAll(".coupon-card").forEach(card => {
+                const code = card.getAttribute("data-code");
+                const button = card.querySelector(".copy-btn");
+                const usageSpan = card.querySelector(".usage");
+                
+                if (collectedCoupons[code]) {
+                    button.textContent = "Collected";
+                    button.disabled = true;
+                    card.style.background = "#ffffff";
+                    card.style.color = "#333";
+                }
+
+                button.addEventListener("click", () => {
+                    if (!collectedCoupons[code]) {
+                        navigator.clipboard.writeText(code);
+                        alert(`Coupon Code ${code} Collected!`);
+                        collectedCoupons[code] = true;
+                        localStorage.setItem("collectedCoupons", JSON.stringify(collectedCoupons));
+                        button.textContent = "Collected";
+                        button.disabled = true;
+                        card.style.background = "#088178";
+                        card.style.color = "#333";
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        #page-header { text-align: center; padding: 20px; background-image: url(img/banner/b1.jpg); }
+        .coupon-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .coupon-card { 
+            background: #ff6600; 
+            color: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            text-align: center; 
+            width: 250px; 
+            position: relative;
+            border: 2px dashed white;
+            transition: background 0.3s, color 0.3s;
+        }
+        .coupon-card h3 { margin: 0; font-size: 24px; }
+        .coupon-card p { margin: 10px 0; }
+        .copy-btn { background: white; color: #ff6600; border: none; padding: 10px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        .copy-btn:hover { background: #f7f7f7; }
+        .coupon-card::before, .coupon-card::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            position: absolute;
+            border-radius: 50%;
+        }
+        .coupon-card::before { top: -10px; left: 50%; transform: translateX(-50%); }
+        .coupon-card::after { bottom: -10px; left: 50%; transform: translateX(-50%); }
+    </style>
+</body>
+</html>

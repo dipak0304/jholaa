@@ -1,0 +1,145 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhola</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="icon" type="logooo.png" href="logooo.png">
+
+  
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+        #page-header { text-align: center; padding: 20px; background: url(img/banner/b1.jpg); color: white; }
+        .faq-container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .faq-category { font-size: 20px; font-weight: bold; margin-top: 20px; color: #ff6600; }
+        .faq-item { border-bottom: 1px solid #ddd; padding: 10px 0; cursor: pointer; }
+        .faq-question { font-weight: bold; }
+        .faq-answer { display: none; padding: 10px; color: #333; }
+        .contact-form { margin-top: 20px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        .contact-form button { background: #ff6600; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; }
+        #header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 100%;
+        }
+        #navbar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #navbar li{
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+        #navbar li a{
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        
+        }
+        #navbar li a:hover,
+        #navbar li a.active{
+            color: #088178;
+        }
+        #navbar li a.active::after,
+        #navbar li a:hover::after
+        {
+            content:"" ;
+            width: 30%;
+            height: 2px;
+            background-color: #088178;
+            position: absolute ;
+            bottom: -4px;
+            left: 20px;
+        }
+        #header .logo{
+            width: 120px;
+            height: 50px;
+            }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="logooo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a  href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a  href="Category.html">Category</a></li>
+                <li><a class="active" href="aboutus.html">About</a></li>
+                <li><a  href="profile.html">Profile</a></li>
+                <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </section> 
+    <section id="page-header">
+        <h2>Help Center</h2>
+        <p>Find answers to your questions or contact us for further assistance.</p>
+    </section>
+
+    <div class="faq-container">
+        <div class="faq-category">Account</div>
+        <div class="faq-item"><div class="faq-question">How do I create an account?</div><div class="faq-answer">Go to the sign-up page, fill in your details, and click "Create Account".</div></div>
+        <div class="faq-item"><div class="faq-question">How do I reset my password?</div><div class="faq-answer">Click on "Forgot Password" on the login page and follow the instructions.</div></div>
+        <div class="faq-item"><div class="faq-question">How can I update my profile information?</div><div class="faq-answer">Go to "My Profile" and edit your details.</div></div>
+        <div class="faq-item"><div class="faq-question">How do I delete my account?</div><div class="faq-answer">Contact customer support to request account deletion.</div></div>
+
+        <div class="faq-category">Orders & Payments</div>
+        <div class="faq-item"><div class="faq-question">How do I update my address book?</div><div class="faq-answer">Go to "My Profile" > "Address Book" and update your saved addresses.</div></div>
+        <div class="faq-item"><div class="faq-question">What payment options do you accept?</div><div class="faq-answer">We accept credit/debit cards, digital wallets, and cash on delivery.</div></div>
+        <div class="faq-item"><div class="faq-question">Can I change my payment method after placing an order?</div><div class="faq-answer">No, payment methods cannot be changed after placing an order.</div></div>
+        <div class="faq-item"><div class="faq-question">How do I apply a coupon code?</div><div class="faq-answer">Enter your coupon code at checkout in the discount field.</div></div>
+
+        <div class="faq-category">Shipping & Delivery</div>
+        <div class="faq-item"><div class="faq-question">How long does delivery take?</div><div class="faq-answer">Delivery times vary by location, typically 3-7 business days.</div></div>
+        <div class="faq-item"><div class="faq-question">Can I track my order?</div><div class="faq-answer">Yes, go to "My Orders" to track your order.</div></div>
+        <div class="faq-item"><div class="faq-question">What if my package is delayed?</div><div class="faq-answer">Contact customer support for assistance.</div></div>
+        <div class="faq-item"><div class="faq-question">Do you offer international shipping?</div><div class="faq-answer">Currently, we only ship within Nepal.</div></div>
+
+        <div class="faq-category">Returns & Refunds</div>
+        <div class="faq-item"><div class="faq-question">How do I return an item?</div><div class="faq-answer">Go to "My Orders" and request a return.</div></div>
+        <div class="faq-item"><div class="faq-question">How long do refunds take?</div><div class="faq-answer">Refunds are processed within 5-7 business days.</div></div>
+        <div class="faq-item"><div class="faq-question">Can I exchange a product?</div><div class="faq-answer">Yes, exchanges are available for eligible products.</div></div>
+        <div class="faq-item"><div class="faq-question">What items are non-refundable?</div><div class="faq-answer">Perishable items and digital goods are non-refundable.</div></div>
+    </div>
+
+    <div class="faq-container contact-form">
+        <h3>Still need help?</h3>
+        <p>Fill out the form below and our team will assist you.</p>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Submit</button>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhola</title>
+    <link rel="icon" type="logooo.png" href="logooo.png">
+   
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+        p, ul {
+            color: #555;
+            text-align: justify;
+            display: none;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            position: relative;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #088178;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            transform: 0.5s;
+        }
+        .back-button:hover{
+            background-color: #000;
+            color: #fff;
+        }
+        #header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 50px;
+           
+        }
+        #navbar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #navbar li{
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+        #navbar li a{
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        
+        }
+        #navbar li a:hover,
+        #navbar li a.active{
+            color: #088178;
+        }
+        #navbar li a.active::after,
+        #navbar li a:hover::after
+        {
+            content:"" ;
+            width: 30%;
+            height: 2px;
+            background-color: #088178;
+            position: absolute ;
+            bottom: -4px;
+            left: 20px;
+        }
+        #header .logo{
+            width: 120px;
+            height: 50px;
+            }
+    </style>
+    <script>
+        function toggleSection(section) {
+            var content = section.nextElementSibling;
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="logooo.png" class="logo" alt=""</a>
+        <div>
+            <ul id="navbar">
+                <li><a  href="index.html">Home</a></li>
+                <li><a class="active" href="shop.html">Shop</a></li>
+                <li><a href="Category.html">Category</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+    </section> 
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p>Welcome to Jhola! This privacy policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+        
+        <h2 onclick="toggleSection(this)">1. Information We Collect ⬇</h2>
+        <ul>
+            <li>Personal details such as name, email, and contact information.</li>
+            <li>Usage data, IP address, and browsing behavior.</li>
+            <li>Payment and transaction history.</li>
+            <li>Device and browser information.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">2. How We Use Your Information ⬇</h2>
+        <ul>
+            <li>To provide and improve our services.</li>
+            <li>For customer support and communication.</li>
+            <li>To enhance user experience and website security.</li>
+            <li>For legal and regulatory compliance.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">3. Cookies and Tracking ⬇</h2>
+        <ul>
+            <li>We use cookies to improve website functionality.</li>
+            <li>Tracking technologies help us analyze user interactions.</li>
+            <li>You can disable cookies in your browser settings.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">4. Data Protection ⬇</h2>
+        <ul>
+            <li>We implement security measures to safeguard your data.</li>
+            <li>Data encryption is used where applicable.</li>
+            <li>Access to personal data is limited to authorized personnel.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">5. Third-Party Services ⬇</h2>
+        <ul>
+            <li>We may share data with trusted third parties.</li>
+            <li>Third-party services help with analytics and advertising.</li>
+            <li>We ensure compliance with data privacy regulations.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">6. User Rights ⬇</h2>
+        <ul>
+            <li>Access, update, or delete your personal information.</li>
+            <li>Request data portability or processing restrictions.</li>
+            <li>Withdraw consent for data collection.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">7. Data Retention ⬇</h2>
+        <ul>
+            <li>We retain data as long as necessary for legal and business purposes.</li>
+            <li>Users can request data deletion.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">8. Children's Privacy ⬇</h2>
+        <ul>
+            <li>We do not knowingly collect data from individuals under 13.</li>
+            <li>Parents can request removal of children's data.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">9. International Data Transfers ⬇</h2>
+        <ul>
+            <li>Data may be stored or processed outside your country.</li>
+            <li>We use industry-standard safeguards for international transfers.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">10. Marketing and Communication ⬇</h2>
+        <ul>
+            <li>We may send you promotional emails with your consent.</li>
+            <li>You can opt out of marketing communications.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">11. Security Breaches ⬇</h2>
+        <ul>
+            <li>We notify affected users in case of data breaches.</li>
+            <li>Security measures are regularly updated.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">12. Legal Compliance ⬇</h2>
+        <ul>
+            <li>We comply with applicable privacy laws and regulations.</li>
+        </ul>
+        
+        <h2 onclick="toggleSection(this)">13. Changes to Privacy Policy ⬇</h2>
+        <p>Jhola reserves the right to update this policy. We encourage you to review it regularly.</p>
+        
+        <div class="footer">
+            <p>&copy; 2025 Jhola. All Rights Reserved.</p>
+            <a href="javascript:history.back()" class="back-button">Back</a>
+        </div>
+    </div>
+    
+</body>
+</html>
+
